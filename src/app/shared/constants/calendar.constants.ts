@@ -12,7 +12,7 @@ export const seasonIcons: Record<string, string> = {
   Winter: '☃️❄️🐧☃️❄️🐧',
   Spring: '🌸🍃🦋🌸🍃🦋',
   Summer: '☀️🌿🍉☀️🌿🍉',
-  Autumn: '🎃🍂🍄🎃🍂🍄',
+  Fall: '🎃🍂🍄🎃🍂🍄',
 };
 
 export const eventTypes: string[] = ['Big Prize!', 'Override', 'To Do'];

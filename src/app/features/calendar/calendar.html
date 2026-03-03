@@ -59,16 +59,15 @@
                       {{ getRewardEmoji(events[0].type) }}
                     </div>
 
-
                     <!-- Refine event tooltip or popup on click? -->
-                     <!-- Add logic so it doesn't go out of screen -->
+                    <!-- Add logic so it doesn't go out of screen -->
                     <div class="event-tooltip">
                       @for (event of events; track event) {
                         <div class="event-tooltip-detail">
                           <span class="type-header">[{{ event.type }}]</span>
                           <div class="detail-content">
-
                             @if (event.type === "To Do") {
+                              <!-- sometimes contains '[PH] Calendar' and 'Easy Desc' or 'Hard Desc' => parser issue? -->
                               <span class="event-label">CHALLENGE:</span> {{ event.challenge?.description }}
                             } @else if (event.type === "Big Prize!") {
                               <span class="event-label">REWARD:</span> {{ event.reward }}
