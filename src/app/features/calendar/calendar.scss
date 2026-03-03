@@ -1,0 +1,203 @@
+$underline-color: #9c9d9c;
+$day-header-cell: #dfdfde;
+$square-border: #333333;
+$square-background: #777776;
+$square-background2: #898888;
+
+.weekday-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+
+  .weekday-header-cell {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: $day-header-cell;
+    height: 1.3rem;
+
+    box-shadow: (inset 1px 1px 0px #ffffff, inset -1px -1.5px 0px #808080);
+
+    .weekday-text {
+      color: #333;
+      font-family: "Tahoma", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+  }
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 5px;
+
+  .calendar-square {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    cursor: pointer;
+    background-color: $square-background;
+
+    &:hover {
+      background: $square-background2;
+      border: 1px solid $square-border;
+      transform: scale(1.05);
+    }
+
+    &:hover .event-tooltip {
+      display: block;
+      z-index: 100;
+    }
+
+    .day-number {
+      position: absolute;
+      top: 2px;
+      right: 4px;
+      color: white;
+      font-family: "Roboto", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .reward-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.75rem;
+      margin-top: 1.6rem;
+    }
+
+    .event-tooltip {
+      display: none;
+      position: absolute;
+      bottom: 75%;
+      left: -135%;
+      transform: translateX(-50%);
+      width: 10em;
+      background: #333333;
+      box-shadow: (inset 1px 1px 0px #ffffff, inset -1px -1.5px 0px #808080);
+      padding: 12px;
+      color: white;
+      font-family: "Courier New", monospace;
+
+      .event-tooltip-detail {
+        &:not(:last-child) {
+          margin-bottom: 10px;
+          padding-bottom: 5px;
+          border-bottom: 1px dashed white;
+        }
+      }
+
+      .type-header {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+      }
+
+      .event-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 2px 0 6px 0;
+      }
+
+      .label {
+        font-size: 0.7rem;
+        color: #fff;
+        background: #004400;
+        padding: 1px 4px;
+        margin-right: 4px;
+      }
+
+      .detail-content {
+        font-size: 0.85rem;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+.season-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  font-weight: 700;
+  background-color: #333333;
+  margin: 10px 16px;
+  box-shadow: (inset 1px 1px 0px #808080, inset -1px -1px 0px #808080);
+
+  .current-season {
+    font-family: "Michroma", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .header-sub-icons {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    margin-top: 0.5rem;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .next-season {
+    font-family: "Tahoma", sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+
+    .month-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .current-month {
+        color: white;
+        font-size: 1rem;
+        font-weight: normal;
+        letter-spacing: 1px;
+      }
+
+      .dash-icons {
+        display: flex;
+        align-items: center;
+
+        .month-btn {
+          font-size: 1.2rem;
+          line-height: 1.5;
+          background: none;
+          border: none;
+          cursor: pointer;
+          width: 35px;
+
+          &:hover {
+            transform: translateY(-5px);
+          }
+          &.is-active {
+            filter: grayscale(1);
+          }
+        }
+
+        .dash {
+          display: inline-block;
+          width: 10px;
+          height: 3px;
+          background-color: white;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@if (fissures$ | async; as fissures) {
+  <app-fissure-section title="Void Fissures (Normal)" [fissures]="fissures.normal" />
+  <app-fissure-section title="Void Fissures (Steel Path)" [fissures]="fissures.hardMode" />
+  <app-fissure-section title="Void Storms (Railjack)" [fissures]="fissures.voidStorm" />
+} @else {
+  <app-skeleton headerClass="fissures-header" [usesFontSet]="true" iconName="genetics" title="Void Fissures (Normal)" [hasCount]="true" />
+  <app-skeleton headerClass="fissures-header" [usesFontSet]="true" iconName="genetics" title="Void Fissures (Steel Path)" [hasCount]="true" />
+  <app-skeleton headerClass="fissures-header" [usesFontSet]="true" iconName="genetics" title="Void Storms (Railjack)" [hasCount]="true" />
+}

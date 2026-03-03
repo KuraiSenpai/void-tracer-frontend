@@ -1,0 +1,131 @@
+@use "palette" as *;
+
+.invasion-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5px 0;
+
+  .centered-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .invasion-node {
+    color: #ff9800;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .faction-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 25rem;
+    margin-bottom: 15px;
+
+    .faction-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      &.attacker {
+        text-align: left;
+        padding-right: 2rem;
+
+        .faction-header-row {
+          justify-content: flex-start;
+        }
+      }
+
+      &.defender {
+        text-align: right;
+        padding-left: 2rem;
+
+        .faction-header-row {
+          justify-content: flex-end;
+        }
+      }
+
+      .faction-header-row {
+        display: flex;
+        gap: 7px;
+
+        .faction-name {
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .percentage-text {
+          color: white;
+          font-size: 0.95rem;
+          letter-spacing: 0.5px;
+        }
+      }
+
+      .reward-text {
+        color: $grey;
+        font-size: 0.75rem;
+        text-align: center;
+        padding-top: 5px;
+
+        &.invisible-text {
+          visibility: hidden;
+        }
+      }
+    }
+
+    .vs-badge {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .progress-container {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .dual-bar {
+    position: relative;
+    height: 8px;
+    display: flex;
+    background: #1a1a1a;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+
+  .grineer-bar {
+    background: $grineer;
+  }
+
+  .corpus-bar {
+    background: $corpus;
+  }
+
+  .infested-bar {
+    background: $infested;
+  }
+}
+
+.grineer-text {
+  color: $grineer;
+}
+.corpus-text {
+  color: $corpus;
+}
+.infested-text {
+  color: $infested;
+}

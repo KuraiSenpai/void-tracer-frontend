@@ -1,0 +1,50 @@
+@if (invasion) {
+  <mat-card class="warframe-card invasion-layout" [class.last-card]="isLast">
+    <mat-card-header class="centered-header">
+      <mat-card-title class="warframe-title invasion-node">{{ invasion.desc }} at {{ invasion.node }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="warframe-content">
+      <div class="faction-row">
+        @if (invasion.attacker; as attacker) {
+          <div class="faction-box attacker">
+            <div class="faction-header-row">
+              <span class="faction-name" [class]="`${getFactionColor(attacker.faction)}-text`">{{ attacker.faction }}</span>
+              <span>|</span>
+              <span class="percentage-text"> {{ invasion.completion | number: "1.1-1" }}%</span>
+            </div>
+
+            @if (attacker.reward; as reward) {
+              <small class="reward-text">{{ reward.countedItems[0].count }}x {{ reward.countedItems[0].type }}</small>
+            } @else {
+              <small class="reward-text invisible-text">Placeholder</small>
+            }
+          </div>
+        }
+
+        <div class="vs-badge">VS</div>
+
+        @if (invasion.defender; as defender) {
+          <div class="faction-box defender">
+            <div class="faction-header-row">
+              <span class="percentage-text">{{ 100 - invasion.completion | number: "1.1-1" }}%</span>
+              <span>|</span>
+              <span class="faction-name" [class]="`${getFactionColor(defender.faction)}-text`">{{ defender.faction }}</span>
+            </div>
+
+            @if (defender.reward; as reward) {
+              <small class="reward-text">{{ reward.countedItems[0].count }}x {{ reward.countedItems[0].type }}</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="progress-container">
+        <div class="dual-bar">
+          <div class="bar" [class]="`${getFactionColor(invasion.attacker.faction)}-bar`" [style.width.%]="invasion.completion"></div>
+          <div class="bar" [class]="`${getFactionColor(invasion.defender.faction)}-bar`" [style.width.%]="100 - invasion.completion"></div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+}

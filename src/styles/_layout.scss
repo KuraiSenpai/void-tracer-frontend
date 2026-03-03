@@ -1,0 +1,94 @@
+@use "palette" as *;
+
+.warframe-grid {
+  display: block;
+  width: 30rem;
+  margin-bottom: 15px;
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    cursor: pointer;
+    user-select: none;
+
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 4px 4px 0 0;
+
+    .mat-icon {
+      margin-right: 10px;
+    }
+
+    .count-badge {
+      margin-left: auto;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .collapsible-content {
+    display: block;
+    max-height: 1500px;
+    opacity: 1;
+
+    transition:
+      max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.4s ease-out,
+      letter-spacing 0.4s ease;
+
+    &.is-collapsed {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+  }
+
+  .card-container {
+    box-shadow: var(--mat-sys-level1);
+    border-radius: 0 0 4px 4px;
+
+    .warframe-card {
+      font-size: 1.1rem;
+      border-radius: 0;
+      box-shadow: none;
+
+      &.last-card {
+        border-radius: 0 0 4px 4px;
+        padding-bottom: 1rem;
+      }
+
+      .warframe-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      .warframe-content {
+        padding-bottom: 0.5rem;
+        font-size: 1.1rem;
+
+        .credits,
+        .reward {
+          margin: 0;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .countdown {
+    display: inline-block;
+    background: $grey;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+  }
+}

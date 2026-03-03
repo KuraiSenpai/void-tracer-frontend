@@ -1,0 +1,95 @@
+@if (calendarData$ | async; as calendar) {
+  <div class="warframe-grid" app-collapsible #c="collapsible">
+    <div class="section-header calendar-header" (click)="c.toggle()">
+      @if (c.isCollapsed) {
+        <mat-icon>expand_more</mat-icon>
+      } @else {
+        <mat-icon>calendar_month</mat-icon>
+      }
+      <span>CALENDAR</span>
+    </div>
+
+    <div class="collapsible-content" [class.is-collapsed]="c.isCollapsed">
+      <div class="card-container">
+        <mat-card class="warframe-card last-card">
+          <mat-card-header class="season-header">
+            <div class="header-left">
+              <!-- TODO: on hover show Eximus season effect -->
+              <mat-card-title class="current-season"> {{ this.YEAR }} {{ calendar.season }} </mat-card-title>
+              <div class="header-sub-icons">{{ SEASON_ICONS[calendar.season] }}</div>
+            </div>
+
+            <span class="spacer"></span>
+
+            <div class="header-right">
+              <div class="month-row">
+                <span class="current-month">{{ currentMonthName() }}</span>
+                <div class="dash-icons">
+                  @for (m of currentMonthsNumbers; track $index) {
+                    <span class="dash"></span>
+                    <button class="month-btn" [class.is-active]="currentMonth() === m" (click)="changeMonth(m)">📅</button>
+                  }
+                </div>
+              </div>
+
+              <div class="next-season">
+                Next Season: <span class="countdown">{{ calendar.expiry! | countdown | async }}</span>
+              </div>
+            </div>
+          </mat-card-header>
+
+          <mat-card-content class="warframe-content">
+            <div class="weekday-header">
+              @for (dayName of this.weekdayNames; track dayName) {
+                <div class="weekday-header-cell">
+                  <span class="weekday-text">{{ dayName }}</span>
+                </div>
+              }
+            </div>
+
+            <div class="days-grid">
+              @for (day of daysArray(); track $index) {
+                @let events = getEventTypeForDate(calendar, $index + 1);
+
+                <div class="calendar-square" [style.grid-column-start]="$index === 0 ? startDayIndex() + 1 : 'auto'">
+                  <span class="day-number">{{ $index + 1 }}</span>
+
+                  @if (events) {
+                    <div class="reward-icon">
+                      {{ getRewardEmoji(events[0].type) }}
+                    </div>
+
+
+                    <!-- Refine event tooltip or popup on click? -->
+                     <!-- Add logic so it doesn't go out of screen -->
+                    <div class="event-tooltip">
+                      @for (event of events; track event) {
+                        <div class="event-tooltip-detail">
+                          <span class="type-header">[{{ event.type }}]</span>
+                          <div class="detail-content">
+
+                            @if (event.type === "To Do") {
+                              <span class="event-label">CHALLENGE:</span> {{ event.challenge?.description }}
+                            } @else if (event.type === "Big Prize!") {
+                              <span class="event-label">REWARD:</span> {{ event.reward }}
+                            } @else if (event.type === "Override") {
+                              <span class="event-label">UPGRADE:</span> {{ event.upgrade?.description }}
+                            }
+                          </div>
+                        </div>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="warframe-footer"></div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+} @else {
+  <app-skeleton headerClass="calendar-header" [usesFontSet]="false" iconName="calendar_month" title="calendar" [hasCount]="true" />
+}

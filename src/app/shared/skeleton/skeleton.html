@@ -1,0 +1,12 @@
+<div class="warframe-grid">
+  <div class="section-header" [class]="headerClass">
+    <mat-icon [fontSet]="usesFontSet ? 'material-symbols-outlined' : ''">{{ iconName }}</mat-icon>
+    <span>{{ title }}</span>
+    @if (hasCount) {
+      <span class="count-badge">?</span>
+    }
+  </div>
+  <div class="card-container">
+    <mat-card class="warframe-card skeleton-card"></mat-card>
+  </div>
+</div>

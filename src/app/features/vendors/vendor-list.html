@@ -1,0 +1,77 @@
+@if (vendors$ | async; as data) {
+  <div class="warframe-grid" app-collapsible #c="collapsible">
+    <div class="section-header vendors-header" (click)="c.toggle()">
+      @if (c.isCollapsed) {
+        <mat-icon>expand_more</mat-icon>
+      } @else {
+        <mat-icon>diamond</mat-icon>
+      }
+      <span>VENDORS</span>
+    </div>
+    <div class="collapsible-content" [class.is-collapsed]="c.isCollapsed">
+      <div class="card-container">
+        @if (data.steelPath; as steelPathOfferings) {
+          <mat-card class="warframe-card">
+            <mat-card-header>
+              <mat-card-title class="warframe-title"><b>Steel Path Honors</b></mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="warframe-content">
+              <p class="reward">{{ steelPathOfferings.currentReward.name }} - {{ steelPathOfferings.currentReward.cost }} Steel Essence</p>
+
+              <div class="warframe-footer">
+                <span class="countdown">{{ steelPathOfferings.expiry! | countdown | async }}</span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (data.varzia; as varziaOfferings) {
+          <mat-card class="warframe-card">
+            <mat-card-header>
+              <mat-card-title class="warframe-title"><b>Prime Resurgence</b></mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="warframe-content">
+              <div class="warframe-footer">
+                <div>
+                  Next rotation in<br />
+                  <span class="countdown">{{ varziaOfferings.expiry! | countdown | async }}</span>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+
+        @if (data.baro; as baroOfferings) {
+          <mat-card class="warframe-card last-card">
+            <mat-card-header>
+              <mat-card-title class="warframe-title"
+                ><b>{{ voidTraderTitle }}</b></mat-card-title
+              >
+            </mat-card-header>
+
+            <mat-card-content class="warframe-content">
+              <div class="warframe-footer">
+                @if (isFuture(baroOfferings.activation!)) {
+                  <div>
+                    Arrives at <b>{{ baroOfferings.location }}</b> in<br />
+                    <span class="countdown">{{ baroOfferings.activation! | countdown | async }}</span>
+                  </div>
+                } @else {
+                  <!-- TO DO: reward list? -->
+                  <div>
+                    Departs from <b>{{ baroOfferings.location }}</b> in<br />
+                    <span class="countdown">{{ baroOfferings.expiry! | countdown | async }}</span>
+                  </div>
+                }
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <app-skeleton headerClass="vendors-header" [usesFontSet]="false" iconName="diamond" title="vendors" [hasCount]="false" />
+}

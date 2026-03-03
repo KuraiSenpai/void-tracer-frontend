@@ -1,0 +1,35 @@
+@if (invasions$ | async; as invasions) {
+  <div class="warframe-grid" app-collapsible #c="collapsible">
+    <div class="section-header invasions-header" (click)="c.toggle()">
+      @if (c.isCollapsed) {
+        <mat-icon>expand_more</mat-icon>
+      } @else {
+        <mat-icon>crisis_alert</mat-icon>
+      }
+      <span>INVASIONS</span>
+      <span class="count-badge">{{ invasions.length }}</span>
+    </div>
+
+    @if (invasions.length > 0) {
+      <div class="collapsible-content" [class.is-collapsed]="c.isCollapsed">
+        <div class="card-container">
+          @for (invasion of invasions; track invasion.id; let isLast = $last) {
+            <app-invasion-section [invasion]="invasion" [isLast]="isLast"></app-invasion-section>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="collapsible-content" [class.is-collapsed]="c.isCollapsed">
+        <div class="card-container">
+          <mat-card class="warframe-card">
+            <mat-card-header>
+              <mat-card-title class="warframe-title">No active invasions detected in the Origin System</mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <app-skeleton headerClass="invasions-header" [usesFontSet]="false" iconName="crisis_alert" title="invasions" [hasCount]="true" />
+}

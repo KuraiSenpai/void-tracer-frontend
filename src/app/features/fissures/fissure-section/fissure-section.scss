@@ -1,0 +1,29 @@
+.tier-row {
+    display: flex;
+    gap: 16px;
+    margin-left: 10px;
+
+    .tier-sidebar {
+        flex: 0 0 80px;
+        padding-top: 20px;
+
+        .tier-name {
+            display: block;
+            font-weight: 700;
+            color: #EBC35A;
+            text-transform: uppercase;
+            text-align: left;
+            font-size: 1rem;
+            border-right: 2px solid rgba(235, 195, 90, 0.3);
+            margin-left: 5px;
+            padding-right: 10px;
+            line-height: 1.2;
+        }
+    }
+
+    .fissure-info-stack {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+}

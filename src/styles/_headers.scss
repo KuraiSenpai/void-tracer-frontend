@@ -1,0 +1,26 @@
+@use "palette" as *;
+
+.alerts-header {
+  background: linear-gradient(90deg, $alerts 0%, $dark 100%);
+  border-left: 5px solid $alerts-border;
+}
+
+.fissures-header {
+  background: linear-gradient(90deg, $fissures 0%, $dark 100%);
+  border-left: 5px solid $fissures-border;
+}
+
+.vendors-header {
+  background: linear-gradient(90deg, $vendors 0%, $dark 100%);
+  border-left: 5px solid $vendors-border;
+}
+
+.invasions-header {
+  background: linear-gradient(90deg, $invasions 0%, $dark 100%);
+  border-left: 5px solid $invasions-border;
+}
+
+.calendar-header {
+  background: linear-gradient(90deg, $calendar 0%, $dark 100%);
+  border-left: 5px solid $calendar-border;
+}
