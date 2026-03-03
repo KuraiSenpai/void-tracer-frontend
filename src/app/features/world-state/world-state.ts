@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Calendar1999 } from "../calendar/calendar";
-import { VendorList } from "../vendors/vendor-list";
-import { AlertList } from "../alerts/alert-list";
-import { FissureList } from "../fissures/fissure-list";
-import { InvasionList } from "../invasions/invasion-list";
+import { AlertList } from '../alerts/alert-list';
+import { Calendar1999 } from '../calendar/calendar';
+import { FissureList } from '../fissures/fissure-list';
+import { InvasionList } from '../invasions/invasion-list';
+import { VendorList } from '../vendors/vendor-list';
 
 @Component({
   selector: 'app-world-state',
@@ -11,6 +11,4 @@ import { InvasionList } from "../invasions/invasion-list";
   templateUrl: './world-state.html',
   styleUrl: './world-state.scss',
 })
-export class WorldState {
-
-}
+export class WorldState {}
