@@ -27,6 +27,8 @@ export class Calendar1999 {
 
   calendarData$!: Observable<Calendar>;
 
+  activeDayEvents: DayEvent[] | null = null;
+
   constructor(private worldStateService: WorldStateService) {}
 
   ngOnInit(): void {
@@ -80,6 +82,16 @@ export class Calendar1999 {
         return '📝';
     }
     return '';
+  }
+
+  openDayEventsPopup(events: DayEvent[]) {
+    if (events && events.length > 0) {
+      this.activeDayEvents = events;
+    }
+  }
+
+  closeDayEventsPopup() {
+    this.activeDayEvents = null;
   }
 
   totalDays = computed(() => {

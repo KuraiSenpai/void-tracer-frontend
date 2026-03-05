@@ -4,6 +4,10 @@ $square-border: #333333;
 $square-background: #777776;
 $square-background2: #898888;
 
+.warframe-grid {
+  position: relative;
+}
+
 .weekday-header {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -48,11 +52,6 @@ $square-background2: #898888;
       transform: scale(1.05);
     }
 
-    &:hover .event-tooltip {
-      display: block;
-      z-index: 100;
-    }
-
     .day-number {
       position: absolute;
       top: 2px;
@@ -69,54 +68,6 @@ $square-background2: #898888;
       align-items: center;
       font-size: 1.75rem;
       margin-top: 1.6rem;
-    }
-
-    .event-tooltip {
-      display: none;
-      position: absolute;
-      bottom: 75%;
-      left: -135%;
-      transform: translateX(-50%);
-      width: 10em;
-      background: #333333;
-      box-shadow: (inset 1px 1px 0px #ffffff, inset -1px -1.5px 0px #808080);
-      padding: 12px;
-      color: white;
-      font-family: "Courier New", monospace;
-
-      .event-tooltip-detail {
-        &:not(:last-child) {
-          margin-bottom: 10px;
-          padding-bottom: 5px;
-          border-bottom: 1px dashed white;
-        }
-      }
-
-      .type-header {
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        opacity: 0.8;
-      }
-
-      .event-title {
-        font-size: 1rem;
-        font-weight: bold;
-        margin: 2px 0 6px 0;
-      }
-
-      .label {
-        font-size: 0.7rem;
-        color: #fff;
-        background: #004400;
-        padding: 1px 4px;
-        margin-right: 4px;
-      }
-
-      .detail-content {
-        font-size: 0.85rem;
-        line-height: 1.2;
-      }
     }
   }
 }
@@ -196,6 +147,105 @@ $square-background2: #898888;
           height: 3px;
           background-color: white;
           border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+.card-container {
+  position: relative;
+
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    border-radius: 0 0 4px 4px;
+
+    .modal-card {
+      width: 50%;
+      background: #0a0a0a;
+      border: 1px solid #444;
+      width: 90%;
+      max-width: 280px;
+      padding: 12px;
+      border-radius: 0; // Hard edges
+      box-shadow: (
+        inset 0 0 10px rgba(255, 255, 255, 0.05),
+        0 5px 15px rgba(0, 0, 0, 0.9)
+      );
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .close-btn {
+          background: none;
+          border: none;
+          color: #666;
+          cursor: pointer;
+          font-family: inherit;
+          font-size: 1rem;
+          padding: 0;
+          margin-left: auto;
+
+          &:hover {
+            color: #ff4d4d;
+          }
+        }
+      }
+
+      .event-list {
+        .event-item {
+          padding: 8px 0;
+          border-bottom: 1px dashed #00aa00;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          .type-tag {
+            font-family: "Courier New", monospace;
+            font-size: 0.95rem;
+            color: #00ff00;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+
+            &::before {
+              content: "[";
+            }
+
+            &::after {
+              content: "]";
+            }
+          }
+
+          .event-content {
+            font-family: "Courier New", monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+
+            .event-title {
+              font-weight: bold;
+              color: #00cc00;
+
+              &::before {
+                content: "> ";
+              }
+            }
+
+            .event-description {
+              font-size: 0.85rem;
+              color: #00bb00;
+            }
+          }
         }
       }
     }

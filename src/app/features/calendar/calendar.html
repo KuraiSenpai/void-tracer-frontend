@@ -51,32 +51,16 @@
               @for (day of daysArray(); track $index) {
                 @let events = getEventTypeForDate(calendar, $index + 1);
 
-                <div class="calendar-square" [style.grid-column-start]="$index === 0 ? startDayIndex() + 1 : 'auto'">
+                <div
+                  class="calendar-square"
+                  [style.grid-column-start]="$index === 0 ? startDayIndex() + 1 : 'auto'"
+                  (click)="openDayEventsPopup(events!)"
+                >
                   <span class="day-number">{{ $index + 1 }}</span>
 
                   @if (events) {
                     <div class="reward-icon">
                       {{ getRewardEmoji(events[0].type) }}
-                    </div>
-
-                    <!-- Refine event tooltip or popup on click? -->
-                    <!-- Add logic so it doesn't go out of screen -->
-                    <div class="event-tooltip">
-                      @for (event of events; track event) {
-                        <div class="event-tooltip-detail">
-                          <span class="type-header">[{{ event.type }}]</span>
-                          <div class="detail-content">
-                            @if (event.type === "To Do") {
-                              <!-- sometimes contains '[PH] Calendar' and 'Easy Desc' or 'Hard Desc' => parser issue? -->
-                              <span class="event-label">CHALLENGE:</span> {{ event.challenge?.description }}
-                            } @else if (event.type === "Big Prize!") {
-                              <span class="event-label">REWARD:</span> {{ event.reward }}
-                            } @else if (event.type === "Override") {
-                              <span class="event-label">UPGRADE:</span> {{ event.upgrade?.description }}
-                            }
-                          </div>
-                        </div>
-                      }
                     </div>
                   }
                 </div>
@@ -86,6 +70,35 @@
             <div class="warframe-footer"></div>
           </mat-card-content>
         </mat-card>
+
+        @if (activeDayEvents) {
+          <div class="modal-overlay" (click)="closeDayEventsPopup()">
+            <div class="modal-card" (click)="$event.stopPropagation()">
+              <div class="modal-header">
+                <button class="close-btn" (click)="closeDayEventsPopup()">×</button>
+              </div>
+
+              <div class="event-list">
+                @for (event of activeDayEvents; track $index) {
+                  <div class="event-item">
+                    <span class="type-tag">{{ event.type }}</span>
+                    <div class="event-content">
+                      @if (event.type === "To Do") {
+                        <div class="event-title">{{ event.challenge?.title }}</div>
+                        <div class="event-description">{{ event.challenge?.description }}</div>
+                      } @else if (event.type === "Big Prize!") {
+                        <div class="event-description">{{ event.reward }}</div>
+                      } @else if (event.type === "Override") {
+                        <div class="event-title">{{ event.upgrade?.title }}</div>
+                        <div class="event-description">{{ event.upgrade?.description }}</div>
+                      }
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
       </div>
     </div>
   </div>
