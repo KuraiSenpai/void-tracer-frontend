@@ -7,13 +7,13 @@ import { env } from '../../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class WorldStateService {
   private baseUrl = env.apiUrl;
-  private worldStateCache$?: Observable<WorldState>;
+  private worldStateCache$?: Observable<any>;
 
   constructor(private http: HttpClient) {}
 
-  public getWorldState(): Observable<WorldState> {
+  public getWorldState(): Observable<any> {
     if (!this.worldStateCache$) {
-      this.worldStateCache$ = this.http.get<WorldState>(`${this.baseUrl}/dynamic/worldState`).pipe(shareReplay(1));
+      this.worldStateCache$ = this.http.get<any>(`${this.baseUrl}/dynamic/worldState`).pipe(shareReplay(1));
     }
     return this.worldStateCache$;
   }
