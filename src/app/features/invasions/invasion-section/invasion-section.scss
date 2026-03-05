@@ -129,3 +129,19 @@
 .infested-text {
   color: $infested;
 }
+
+@media (max-width: 768px) {
+  .faction-row {
+    width: 90vw !important;
+  }
+
+  .faction-box {
+    &.attacker {
+      padding-right: 1rem !important;
+    }
+
+    &.defender {
+      padding-left: 1rem !important;
+    }
+  }
+}

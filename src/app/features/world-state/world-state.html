@@ -1,15 +1,26 @@
-<main class="content-wrapper">
-  <div class="column">
-    <app-alerts></app-alerts>
-  </div>
+<div class="dashboard-wrapper">
+  @for (colIdx of columnIndices; track colIdx) {
+    <div class="silo">
+      @for (id of getColWidgets(colIdx); track id) {
+        @switch (id) {
+          @case ("alerts") {
+            <app-alerts />
+          }
+          @case ("vendors") {
+            <app-vendors />
+          }
+          @case ("calendar") {
+            <app-calendar-1999 />
+          }
+          @case ("invasions") {
+            <app-invasions />
+          }
 
-  <div class="column">
-    <app-vendors></app-vendors>
-    <app-invasions></app-invasions>
-  </div>
-
-  <div class="column">
-    <app-calendar-1999></app-calendar-1999>
-    <app-fissures></app-fissures>
-  </div>
-</main>
+          @case ("fissures") {
+            <app-fissures />
+          }
+        }
+      }
+    </div>
+  }
+</div>

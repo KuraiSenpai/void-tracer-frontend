@@ -201,3 +201,17 @@ $square-background2: #898888;
     }
   }
 }
+
+@media (max-width: 768px) {
+  .day-number {
+    font-size: 0.65rem !important;
+  }
+
+  .reward-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem !important;
+    margin-top: 1.3rem !important;
+  }
+}

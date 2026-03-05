@@ -45,45 +45,4 @@ body {
   b {
     font-weight: 500;
   }
-
-  .content-wrapper {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 15px;
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 30rem;
-      min-width: 0;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .content-wrapper {
-      width: 100vw;
-      gap: 0;
-      padding: 0;
-      margin: 0;
-
-      .column {
-        .warframe-grid {
-          max-width: 100vw;
-          padding: 0;
-          margin: 0;
-
-          .section-header {
-            border-radius: 0 !important;
-          }
-
-          .faction-row {
-            width: 97vw;
-          }
-        }
-      }
-    }
-  }
 }
