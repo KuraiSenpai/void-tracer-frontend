@@ -29,7 +29,7 @@
                   <p class="reward">{{ reward }}</p>
                 }
                 @for (reward of alert.mission.reward!.countedItems!; track $index) {
-                  <p class="reward">{{ reward.key }}</p>
+                  <p class="reward">{{ reward.count }}x {{ reward.key }}</p>
                 }
 
                 <div class="warframe-footer">
