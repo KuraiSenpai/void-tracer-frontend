@@ -5,10 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { Archimedea } from 'warframe-worldstate-parser';
 import { CollapsibleDirective } from '../../../shared/directives/collapsible.directive';
 import { Skeleton } from '../../../shared/skeleton/skeleton';
+import { CountdownPipe } from "../../../shared/pipes/countdown.pipe";
 
 @Component({
   selector: 'app-archimedea-section',
-  imports: [CommonModule, CollapsibleDirective, MatIconModule, MatCardModule, Skeleton],
+  imports: [CommonModule, CollapsibleDirective, MatIconModule, MatCardModule, Skeleton, CountdownPipe],
   templateUrl: './archimedea-section.html',
   styleUrl: './archimedea-section.scss',
 })

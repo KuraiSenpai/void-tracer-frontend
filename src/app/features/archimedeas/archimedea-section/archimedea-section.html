@@ -28,7 +28,7 @@
                   <div class="risks">
                     @for (risk of mission.risks; track $index) {
                       <div class="risk">
-                         <div class="risk-title">Risk Variable {{ risk.isHard ? '(ELITE)' : ''}}</div>
+                        <div class="risk-title">Risk Variable {{ risk.isHard ? "(ELITE)" : "" }}</div>
                         <div class="risk-name">{{ risk.name }}</div>
                         <div class="risk-description">{{ risk.description }}</div>
                       </div>
@@ -45,6 +45,14 @@
                         <div class="modifier-description">{{ modifier.description }}</div>
                       </div>
                     }
+                  </div>
+                }
+
+                @if (isLast) {
+                  <div class="warframe-footer">
+                    <div>
+                      Resets in <span class="countdown">{{ archimedea.expiry! | countdown | async }}</span>
+                    </div>
                   </div>
                 }
               </div>
