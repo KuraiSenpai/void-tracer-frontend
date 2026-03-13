@@ -1,0 +1,7 @@
+@if (archimedeas$ | async; as archimedeas) {
+  <app-archimedea-section title="Deep Archimedea" [archimedea]="archimedeas[0]"/>
+  <app-archimedea-section title="Temporal Archimedea" [archimedea]="archimedeas[1]" />
+} @else {
+  <app-skeleton headerClass="archimedeas-header" [usesFontSet]="false" iconName="" title="Deep Archimedea" [hasCount]="false" />
+  <app-skeleton headerClass="archimedeas-header" [usesFontSet]="false" iconName="" title="Temporal Archimedea" [hasCount]="false" />
+}

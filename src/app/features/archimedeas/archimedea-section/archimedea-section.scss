@@ -1,0 +1,155 @@
+@use "palette" as *;
+
+$red: #ff8888;
+
+.warframe-card {
+  .warframe-content {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  &.first-card {
+    .warframe-content {
+      padding-top: 12px !important;
+    }
+  }
+}
+
+.archimedea {
+  display: flex;
+  flex-direction: column;
+
+  .archimedea-content {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba($grey, 0.5);
+
+    .missionType {
+      color: $archimedea-border;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .deviation {
+      margin-bottom: 0.75rem;
+      border-left: 3px solid $red;
+      padding-left: 10px;
+      background: linear-gradient(
+        90deg,
+        rgba($red, 0.1) 0%,
+        rgba($dark, 0.1) 100%
+      );
+
+      .deviation-title {
+        color: rgba($red, 0.5);
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding-top: 0.25rem;
+        margin-bottom: 0.15rem;
+      }
+
+      .deviation-name {
+        color: rgba($red, 0.9);
+        font-size: 0.95rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .deviation-description {
+        font-size: 0.95rem;
+        color: #efefef;
+        line-height: 1.4;
+        padding-bottom: 3px;
+      }
+    }
+
+    .risks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .risk {
+        border-left: 3px solid $red;
+        padding-left: 10px;
+        background: linear-gradient(
+          90deg,
+          rgba($red, 0.1) 0%,
+          rgba($dark, 0.1) 100%
+        );
+
+        .risk-title {
+          color: rgba($red, 0.5);
+          font-size: 1rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          padding-top: 0.25rem;
+          margin-bottom: 0.15rem;
+        }
+
+        .risk-name {
+          color: rgba($red, 0.9);
+          font-size: 0.95rem;
+          margin-bottom: 0.1rem;
+        }
+
+        .risk-description {
+          color: #efefef;
+          font-size: 0.95rem;
+          line-height: 1.4;
+          padding-bottom: 3px;
+        }
+      }
+    }
+  }
+
+  .personal-modifiers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    // background: rgba(0, 0, 0, 0.2);
+    // border: 1px solid rgba($grey, 0.5);
+
+    .modifier-title {
+      color: $archimedea-border;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .personal-modifier {
+      background: linear-gradient(
+        90deg,
+        rgba($red, 0.1) 0%,
+        rgba($dark, 0.1) 100%
+      );
+
+      border: 1px solid rgba($grey, 0.2);
+      border-left: 3px solid $red;
+      padding: 10px 30px 10px 15px;
+
+      .modifier-name {
+        color: rgba($red, 0.9);
+        font-size: 1rem;
+      }
+
+      .modifier-description {
+        color: #efefef;
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+.warframe-footer {
+  display: flex;
+  align-items: flex-end;
+  .countdown-container {
+    // margin-left: auto;
+    font-size: 0.95rem;
+  }
+}

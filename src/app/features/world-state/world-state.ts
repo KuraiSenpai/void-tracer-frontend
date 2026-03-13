@@ -4,15 +4,16 @@ import { Calendar1999 } from '../calendar/calendar';
 import { FissureList } from '../fissures/fissure-list';
 import { InvasionList } from '../invasions/invasion-list';
 import { VendorList } from '../vendors/vendor-list';
+import { ArchimedeaList } from "../archimedeas/archimedea-list";
 
 @Component({
   selector: 'app-world-state',
-  imports: [Calendar1999, VendorList, AlertList, FissureList, InvasionList],
+  imports: [Calendar1999, VendorList, AlertList, FissureList, InvasionList, ArchimedeaList],
   templateUrl: './world-state.html',
   styleUrl: './world-state.scss',
 })
 export class WorldState {
-  private widgets = ['alerts', 'vendors', 'calendar', 'invasions', 'fissures'];
+  private widgets = ['alerts', 'vendors', 'calendar', 'archimedeas', 'invasions', 'fissures'];
   private columnCount = 3;
 
   @HostListener('window:resize')

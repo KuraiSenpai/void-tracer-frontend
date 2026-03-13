@@ -1,0 +1,59 @@
+@if (archimedea) {
+  <div class="warframe-grid" app-collapsible #c="collapsible">
+    <div class="section-header archimedeas-header" (click)="c.toggle()">
+      @if (c.isCollapsed) {
+        <mat-icon>expand_more</mat-icon>
+      } @else {
+        <mat-icon>science</mat-icon>
+      }
+      <span>{{ title }}</span>
+    </div>
+    <div class="collapsible-content" [class.is-collapsed]="c.isCollapsed">
+      <div class="card-container">
+        @for (mission of archimedea.missions; track $index; let isFirst = $first; let isLast = $last) {
+          <mat-card class="warframe-card" [class.first-card]="isFirst" [class.last-card]="isLast">
+            <mat-card-content class="warframe-content">
+              <div class="archimedea">
+                <div class="archimedea-content">
+                  <div class="missionType">
+                    {{ mission.missionType }}
+                  </div>
+
+                  <div class="deviation">
+                    <div class="deviation-title">Deviation</div>
+                    <div class="deviation-name">{{ mission.deviation.name }}</div>
+                    <div class="deviation-description">{{ mission.deviation.description }}</div>
+                  </div>
+
+                  <div class="risks">
+                    @for (risk of mission.risks; track $index) {
+                      <div class="risk">
+                         <div class="risk-title">Risk Variable {{ risk.isHard ? '(ELITE)' : ''}}</div>
+                        <div class="risk-name">{{ risk.name }}</div>
+                        <div class="risk-description">{{ risk.description }}</div>
+                      </div>
+                    }
+                  </div>
+                </div>
+
+                @if (isLast) {
+                  <div class="personal-modifiers">
+                    <div class="modifier-title">Personal Modifiers</div>
+                    @for (modifier of archimedea.personalModifiers; track $index) {
+                      <div class="personal-modifier">
+                        <div class="modifier-name">{{ modifier.name }}</div>
+                        <div class="modifier-description">{{ modifier.description }}</div>
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <app-skeleton headerClass="archimedeas-header" [usesFontSet]="false" iconName="" [title]="title" [hasCount]="false" />
+}
