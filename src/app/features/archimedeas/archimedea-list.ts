@@ -7,7 +7,7 @@ import { Skeleton } from '../../shared/skeleton/skeleton';
 import { ArchimedeaSection } from './archimedea-section/archimedea-section';
 
 @Component({
-  selector: 'app-archimedea-list',
+  selector: 'app-archimedeas',
   imports: [CommonModule, ArchimedeaSection, Skeleton],
   templateUrl: './archimedea-list.html',
   styleUrl: './archimedea-list.scss',
