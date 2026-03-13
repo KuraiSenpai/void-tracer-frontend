@@ -1,15 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 import { Archimedea } from 'warframe-worldstate-parser';
 import { CollapsibleDirective } from '../../../shared/directives/collapsible.directive';
-import { MatIconModule } from "@angular/material/icon";
-import { MatCardModule } from "@angular/material/card";
-import { Skeleton } from "../../../shared/skeleton/skeleton";
-import { CountdownPipe } from "../../../shared/pipes/countdown.pipe";
+import { Skeleton } from '../../../shared/skeleton/skeleton';
 
 @Component({
   selector: 'app-archimedea-section',
-  imports: [CommonModule, CollapsibleDirective, MatIconModule, MatCardModule, Skeleton, CountdownPipe],
+  imports: [CommonModule, CollapsibleDirective, MatIconModule, MatCardModule, Skeleton],
   templateUrl: './archimedea-section.html',
   styleUrl: './archimedea-section.scss',
 })
