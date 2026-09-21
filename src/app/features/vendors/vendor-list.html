@@ -18,9 +18,8 @@
 
             <mat-card-content class="warframe-content">
               <p class="reward">{{ steelPathOfferings.currentReward.name }} - {{ steelPathOfferings.currentReward.cost }} Steel Essence</p>
-
               <div class="warframe-footer">
-                <span class="countdown">{{ steelPathOfferings.expiry! | countdown | async }}</span>
+                <span class="countdown">{{ normalizeExpiry(steelPathOfferings.expiry!) | countdown | async }}</span>
               </div>
             </mat-card-content>
           </mat-card>
@@ -42,6 +41,21 @@
             </mat-card-content>
           </mat-card>
         }
+
+        <mat-card class="warframe-card">
+          <mat-card-header>
+            <mat-card-title class="warframe-title"><b>Bird 3</b></mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content class="warframe-content">
+            <p class="reward">{{ currentShardText }} Archon Shard</p>
+            <div class="warframe-footer">
+              <div>
+                <span class="countdown">{{ nextWeeklyResetDate! | countdown | async }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
 
         @if (data.baro; as baroOfferings) {
           <mat-card class="warframe-card last-card">
