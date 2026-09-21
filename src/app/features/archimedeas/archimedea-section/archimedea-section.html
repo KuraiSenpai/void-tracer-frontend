@@ -14,27 +14,35 @@
           <mat-card class="warframe-card" [class.first-card]="isFirst" [class.last-card]="isLast">
             <mat-card-content class="warframe-content">
               <div class="archimedea">
-                <div class="archimedea-content">
-                  <div class="missionType">
-                    {{ mission.missionType }}
-                  </div>
-
-                  <!-- TODO: collapsible? (closed or open first?) -->
-
-                  <div class="deviation">
-                    <div class="deviation-title">Deviation</div>
-                    <div class="deviation-name">{{ mission.deviation.name }}</div>
-                    <div class="deviation-description">{{ mission.deviation.description }}</div>
-                  </div>
-
-                  <div class="risks">
-                    @for (risk of mission.risks; track $index) {
-                      <div class="risk">
-                        <div class="risk-title">Risk Variable {{ risk.isHard ? "(ELITE)" : "" }}</div>
-                        <div class="risk-name">{{ risk.name }}</div>
-                        <div class="risk-description">{{ risk.description }}</div>
-                      </div>
+                <div class="archimedea-content" app-collapsible [collapsible]="true" #c="collapsible">
+                  <div class="mission-header" (click)="c.toggle()">
+                    @if (c.isCollapsed) {
+                      <mat-icon>expand_more</mat-icon>
+                    } @else {
+                      <mat-icon>expand_less</mat-icon>
                     }
+
+                    <span class="mission-type">
+                      {{ mission.missionType }}
+                    </span>
+                  </div>
+
+                  <div class="collapsible-content" [class.is-collapsed]="c.isCollapsed">
+                    <div class="deviation">
+                      <div class="deviation-title">Deviation</div>
+                      <div class="deviation-name">{{ mission.deviation.name }}</div>
+                      <div class="deviation-description">{{ mission.deviation.description }}</div>
+                    </div>
+
+                    <div class="risks">
+                      @for (risk of mission.risks; track $index) {
+                        <div class="risk">
+                          <div class="risk-title">Risk Variable {{ risk.isHard ? "(ELITE)" : "" }}</div>
+                          <div class="risk-name">{{ risk.name }}</div>
+                          <div class="risk-description">{{ risk.description }}</div>
+                        </div>
+                      }
+                    </div>
                   </div>
                 </div>
 
