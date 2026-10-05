@@ -1,4 +1,10 @@
-export const voidTraderName: string = "Baro Ki'Teer";
+export const BARO_PREFIX = "Baro";
+export const EVIL_BARO_PREFIX = 'EvilBaro';
+
+export const VOID_TRADER_TITLES: Record<string, string> = {
+  [BARO_PREFIX]: "Baro Ki'Teer",
+  [EVIL_BARO_PREFIX]: "Evil Baro Ki'Teer",
+};
 
 export enum ShardColor {
   BLUE = 'Azure',
