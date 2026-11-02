@@ -13,7 +13,7 @@ export class WorldStateService {
 
   public getWorldState(): Observable<any> {
     if (!this.worldStateCache$) {
-      this.worldStateCache$ = this.http.get<any>(`${this.baseUrl}/dynamic/worldState`).pipe(shareReplay(1));
+      this.worldStateCache$ = this.http.get<any>(`${this.baseUrl}/worldState`).pipe(shareReplay(1));
     }
     return this.worldStateCache$;
   }
