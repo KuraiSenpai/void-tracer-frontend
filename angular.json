@@ -30,13 +30,9 @@
               }
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles"
-              ]
+              "includePaths": ["src/styles"]
             },
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss", "src/styles/_palette.scss"]
           },
           "configurations": {
             "production": {

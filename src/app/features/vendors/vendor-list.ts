@@ -10,6 +10,8 @@ import { CollapsibleDirective } from '../../shared/directives/collapsible.direct
 import { CountdownPipe } from '../../shared/pipes/countdown.pipe';
 import { Skeleton } from '../../shared/skeleton/skeleton';
 import { isFuture, normalizeExpiry } from '../../shared/utils/date-utils';
+import { AcrithisOfferings } from '../../core/models/acrithis-offerings.model';
+import { AcrithisService } from '../../core/services/acrithis.service';
 
 @Component({
   selector: 'app-vendors',
@@ -27,11 +29,13 @@ export class VendorList implements OnInit {
     baro: VoidTrader;
   }>;
 
+  acrithis$!: Observable<AcrithisOfferings>;
+
   voidTraderTitle = BARO_PREFIX;
   nextWeeklyResetDate!: Date;
   currentShardText: ShardColor | '' = '';
 
-  constructor(private worldStateService: WorldStateService) {}
+  constructor(private worldStateService: WorldStateService, private acrithisService: AcrithisService) {}
 
   ngOnInit(): void {
     this.vendors$ = this.worldStateService.getWorldState().pipe(
@@ -48,6 +52,8 @@ export class VendorList implements OnInit {
       }),
       shareReplay(1),
     );
+
+    this.acrithis$ = this.acrithisService.getWeeklyOfferings();
 
     this.getCurrentBird3Shard();
   }

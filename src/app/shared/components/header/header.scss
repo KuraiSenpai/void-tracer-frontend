@@ -1,6 +1,8 @@
+@use "palette" as *;
+
 .nav {
   background: linear-gradient(180deg, #050505 0%, #111 100%);
-  border-bottom: 1px solid #c09b3d;
+  border-bottom: 1px solid $void-tracer-gold;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
