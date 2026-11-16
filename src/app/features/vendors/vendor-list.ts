@@ -50,7 +50,6 @@ export class VendorList implements OnInit {
           baro: baro,
         };
       }),
-      shareReplay(1),
     );
 
     this.acrithis$ = this.acrithisService.getWeeklyOfferings();

@@ -36,7 +36,6 @@ export class FissureList implements OnInit {
         hardMode: data.fissures.filter((f) => f.isHard),
         voidStorm: data.fissures.filter((f) => f.isStorm),
       })),
-      shareReplay(1),
     );
   }
 }

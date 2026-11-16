@@ -34,7 +34,6 @@ export class Calendar1999 {
   ngOnInit(): void {
     this.calendarData$ = this.worldStateService.getWorldState().pipe(
       map((data: WorldState) => data.calendar),
-      shareReplay(1),
     );
 
     this.calendarData$.pipe(take(1)).subscribe((calendar) => {
@@ -56,7 +55,7 @@ export class Calendar1999 {
     return [...new Set(currentMonths)];
   }
 
-  // TODO: transform into a pipe => application keeps calling this endlessly atm
+  // TODO: transform into a pipe => application keeps calling this endlessly atm?
   getEventTypeForDate(calendar: Calendar, dayNum: number): DayEvent[] | null {
     const dayStr = dayNum.toString().padStart(2, '0');
     const monthStr = this.currentMonth().toString().padStart(2, '0');

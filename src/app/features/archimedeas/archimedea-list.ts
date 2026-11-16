@@ -20,7 +20,6 @@ export class ArchimedeaList implements OnInit {
   ngOnInit(): void {
     this.archimedeas$ = this.worldStateService.getWorldState().pipe(
       map((data: WorldState) => data.archimedeas),
-      shareReplay(1),
     );
   }
 }

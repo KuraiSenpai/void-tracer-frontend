@@ -23,7 +23,6 @@ export class AlertList implements OnInit {
   ngOnInit(): void {
     this.alerts$ = this.worldStateService.getWorldState().pipe(
       map((data: WorldState) => data.alerts),
-      shareReplay(1),
     );
   }
 }

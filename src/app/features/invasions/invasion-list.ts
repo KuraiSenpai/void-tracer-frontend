@@ -24,8 +24,7 @@ export class InvasionList implements OnInit {
     this.invasions$ = this.worldStateService.getWorldState().pipe(
       map((data: WorldState) => {
         return data.invasions.filter((invasion) => !invasion.completed && invasion.completion < 100 && invasion.completion > 0);
-      }),
-      shareReplay(1),
+      })
     );
   }
 }

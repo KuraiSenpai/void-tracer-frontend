@@ -23,7 +23,6 @@ export class EventList implements OnInit {
   ngOnInit(): void {
     this.events$ = this.worldStateService.getWorldState().pipe(
       map((data: WorldState) => data.events),
-      shareReplay(1),
     );
   }
 }

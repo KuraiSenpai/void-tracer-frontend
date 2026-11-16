@@ -11,7 +11,7 @@
             <div class="faction-header-row">
               <span class="faction-name" [class]="`${getFactionColor(attacker.faction)}-text`">{{ attacker.faction }}</span>
               <span>|</span>
-              <span class="percentage-text"> {{ invasion.completion | number: "1.1-1" }}%</span>
+              <span class="percentage-text"> {{ invasion.completion | number: "1.1-2" }}%</span>
             </div>
 
             @if (attacker.reward; as reward) {
@@ -27,7 +27,7 @@
         @if (invasion.defender; as defender) {
           <div class="faction-box defender">
             <div class="faction-header-row">
-              <span class="percentage-text">{{ 100 - invasion.completion | number: "1.1-1" }}%</span>
+              <span class="percentage-text">{{ 100 - invasion.completion | number: "1.1-2" }}%</span>
               <span>|</span>
               <span class="faction-name" [class]="`${getFactionColor(defender.faction)}-text`">{{ defender.faction }}</span>
             </div>
